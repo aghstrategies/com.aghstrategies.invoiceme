@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<extension key="com.aghstrategies.invoiceme" type="module">
+  <file>invoiceme</file>
+  <name>Invoice Me</name>
+  <description>Adds a Print Invoice button to the Thank you page when its for a pending pay later contribution</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Alice Frumin</author>
+    <email>alice@aghstrategies.com</email>
+  </maintainer>
+  <urls>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2017-10-03</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.7</ver>
+  </compatibility>
+  <civix>
+    <namespace>CRM/Invoiceme</namespace>
+  </civix>
+</extension>
