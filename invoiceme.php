@@ -3,19 +3,21 @@
 require_once 'invoiceme.civix.php';
 
 /**
- * Implements hook_civicrm_buildForm().
+ * Implements hook_civicrm_post().
  *
- * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_buildForm
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_post
  */
-function invoiceme_civicrm_buildForm($formName, &$form) {
-  if ($formName == 'CRM_Contribute_Form_Contribution_ThankYou') {
-    $contactID = $form->getVar('_contactID');
-    // TODO Contrib ID not working
-    // $contribID = $form->getVar('_contributionID');
-    // TODO update url to use variables for contact Id Contrib Id and siteURL
-    $url = "http://aghdev.watereuse.org/cividash/?page=CiviCRM&q=civicrm/contribute/invoice&reset=1&id=26930&cid=58780";
+function invoiceme_civicrm_post($op, $objectName, $objectId, &$objectRef) {
+  if ($op == 'create' && $objectName == 'Contribution' && $objectRef->is_pay_later == 1 && $objectRef->contribution_status_id == 2 && !empty($objectRef->contact_id)) {
+    $baseUrl = CRM_Utils_System::baseURL();
+    $link = CRM_Utils_System::href(
+      'Invoice Me', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$objectRef->contact_id}", TRUE,
+      NULL, TRUE, TRUE, FALSE
+    );
+    CRM_Core_Session::setStatus(ts("$link"), '', 'no-popup');
   }
 }
+
 
 /**
  * Implements hook_civicrm_config().
