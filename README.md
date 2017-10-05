@@ -1,4 +1,6 @@
 This Extension
 --------------
 
-Creates a print invoice link on the Thank You page for pending pay later contributions that allows the user to download/print an invoice from the Thank You page.
+Whenever a pending pay later contribution is successfully created by a logged in user (front or back end) this extension creates a yellow box with a link to print an invoice.
+
+Configuration: enable this extension and the permission "CiviCRM: view my invoices Allow users to view/ download their own invoices".

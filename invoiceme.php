@@ -9,12 +9,14 @@ require_once 'invoiceme.civix.php';
  */
 function invoiceme_civicrm_post($op, $objectName, $objectId, &$objectRef) {
   if ($op == 'create' && $objectName == 'Contribution' && $objectRef->is_pay_later == 1 && $objectRef->contribution_status_id == 2 && !empty($objectRef->contact_id)) {
-    $baseUrl = CRM_Utils_System::baseURL();
-    $link = CRM_Utils_System::href(
-      'Invoice Me', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$objectRef->contact_id}", TRUE,
-      NULL, TRUE, TRUE, FALSE
-    );
-    CRM_Core_Session::setStatus(ts("$link"), '', 'no-popup');
+    $contactID = CRM_Core_Session::getLoggedInContactID();
+    if ($contactID >= 1) {
+      $baseUrl = CRM_Utils_System::baseURL();
+      $link = CRM_Utils_System::href(
+        'Print Invoice', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$objectRef->contact_id}", TRUE, NULL, TRUE, TRUE, FALSE
+      );
+      CRM_Core_Session::setStatus(ts("$link"), '', 'no-popup');
+    }
   }
 }
 
