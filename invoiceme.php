@@ -13,7 +13,7 @@ function invoiceme_civicrm_post($op, $objectName, $objectId, &$objectRef) {
     if ($contactID >= 1) {
       $baseUrl = CRM_Utils_System::baseURL();
       $link = CRM_Utils_System::href(
-        'Print Invoice', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$objectRef->contact_id}", TRUE, NULL, TRUE, TRUE, FALSE
+        'Print Invoice', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$contactID}", TRUE, NULL, TRUE, TRUE, FALSE
       );
       CRM_Core_Session::setStatus(ts("$link"), '', 'no-popup');
     }
