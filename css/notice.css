@@ -1,0 +1,13 @@
+body .status.messages.no-popup {
+  background: white;
+  color: white;
+  border: white;
+}
+
+body .status.messages.no-popup a {
+ color: white;
+}
+
+div.icon.inform-icon {
+display: none;
+}

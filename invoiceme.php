@@ -15,8 +15,15 @@ function invoiceme_civicrm_post($op, $objectName, $objectId, &$objectRef) {
       $link = CRM_Utils_System::href(
         'Print Invoice', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$contactID}", TRUE, NULL, TRUE, TRUE, FALSE
       );
-      CRM_Core_Session::setStatus("$link", 'Attention:', 'alert');
+      $link = substr_replace($link, "<a class='iron-button' ", 0, 2);
+      CRM_Core_Session::setStatus("$link", '', 'alert');
     }
+  }
+}
+
+function invoiceme_civicrm_buildForm($formName, &$form) {
+  if ($formName == "CRM_Contribute_Form_Contribution_ThankYou") {
+    CRM_Core_Resources::singleton()->addStyleFile('com.aghstrategies.invoiceme', 'css/notice.css', 1, 'html-header');
   }
 }
 
