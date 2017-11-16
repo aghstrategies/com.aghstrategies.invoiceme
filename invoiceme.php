@@ -15,7 +15,7 @@ function invoiceme_civicrm_post($op, $objectName, $objectId, &$objectRef) {
       $link = CRM_Utils_System::href(
         'Print Invoice', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$contactID}", TRUE, NULL, TRUE, TRUE, FALSE
       );
-      CRM_Core_Session::setStatus(ts("$link"), '', 'no-popup');
+      CRM_Core_Session::setStatus("$link", 'Attention:', 'alert');
     }
   }
 }
