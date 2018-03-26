@@ -13,9 +13,9 @@ function invoiceme_civicrm_post($op, $objectName, $objectId, &$objectRef) {
     if ($contactID >= 1) {
       $baseUrl = CRM_Utils_System::baseURL();
       $link = CRM_Utils_System::href(
-        'Print Invoice', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$contactID}", TRUE, NULL, TRUE, TRUE, FALSE
+        '<i class="crm-i fa-print"></i> Print Invoice', "civicrm/contribute/invoice", "reset=1&id={$objectId}&cid={$contactID}", TRUE, NULL, TRUE, TRUE, FALSE
       );
-      $link = substr_replace($link, "<a class='iron-button' ", 0, 2);
+      $link = substr_replace($link, "<a class='iron-button print'", 0, 2);
       CRM_Core_Session::setStatus("$link", '', 'alert');
     }
   }

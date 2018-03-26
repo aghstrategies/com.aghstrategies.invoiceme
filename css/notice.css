@@ -5,9 +5,13 @@ body .status.messages.no-popup {
 }
 
 body .status.messages.no-popup a {
- color: white;
+  color: white;
 }
 
 div.icon.inform-icon {
-display: none;
+  display: none;
+}
+
+a.iron-button.print {
+  background: darkblue;
 }
